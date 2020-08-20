@@ -56,17 +56,27 @@
 //         return res + b;
 //     };
 // };
-const sum = a => b => a + b;
-
-function sumFnc(a) {
-    return function (b) {
-        return a + b;
-    };
-};
-
-const memoized = sum(3);
 
 
-console.log(memoized(5));
+// const sum = a => b => a + b;
+
+// function sumFnc(a) {
+//     return function (b) {
+//         return a + b;
+//     };
+// };
+
+// const memoized = sum(3);
+
+
+// console.log(memoized(5));
 // console.log(memoized(3));
 // console.log(memoized(5));
+
+const iteration = counter();
+iteration.inc();
+iteration.inc();
+iteration.inc();
+iteration.inc();
+iteration.inc();
+console.log(iteration.value());//5
