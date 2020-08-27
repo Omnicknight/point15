@@ -1,82 +1,27 @@
-// const user = {
-//     name: 'Vasya',
-// };
+function sum(a,b,c,d) { return a+b+c+d; }
 
-// const user2 = {
-//     name: 'Vasya The Second',
-// };
+const curry = (col, a = 0, b = 0) => {
+    return  function(c = 0, d = 0) {
+        return col(a, b, c, d);
+    }
+};
 
-// const newMap = new Map();
+const curriedFunction = curry(sum, 1, 2); // запоминает для вызова sum 2 параметра
 
-// newMap.set(user, 0);
-// newMap.set(user2, 5);
-
-// newMap.set(user, newMap.get(user) + 1);
-
-// console.log(Array.from(newMap));
-
-// const mySet = new Set();
-// const arr = [1, 1, 2, 4, 5, 67, 3, 2, 3, 2, 2445, 221, 1, 2];
-// arr.forEach((value) => {
-//     mySet.add(value);
-// });
-
-// console.log(mySet);
-
-// for (const [user, visits] of newMap) {
-//     console.log(user, visits);
-// }
-
-// for (const iterator of newMap) {
-//     console.log(...iterator);
-// }
-
-// newMap.forEach((...rest) => {
-//     console.log(rest);
-// })
-
-// counter = () => {
-//     let a = 0;
-//     return function () {
-//         return ++a;
-//     };
-// };
-
-// const count = counter();
+console.log(curriedFunction(3, 4)) // выводит 10 т.е. выполняется функционал sum(1,2,3,4).
 
 
-// console.log(count());
-// console.log(count());
-// console.log(count());
+const counter = (value = 0) => {
+    return {
+        inc: () => value++,
+        dec: () => value--,
+        value: () => value,
+    };
+};
 
-// counter = (a, b) => {
-//     let res = a;
-//     return function () {
-        
-//         return res + b;
-//     };
-// };
+const iterator = counter();
+iterator.inc() // увеличивает значение на 1
+iterator.inc() // еще на 1
+iterator.dec() // уменьшает на 1
 
-
-// const sum = a => b => a + b;
-
-// function sumFnc(a) {
-//     return function (b) {
-//         return a + b;
-//     };
-// };
-
-// const memoized = sum(3);
-
-
-// console.log(memoized(5));
-// console.log(memoized(3));
-// console.log(memoized(5));
-
-const iteration = counter();
-iteration.inc();
-iteration.inc();
-iteration.inc();
-iteration.inc();
-iteration.inc();
-console.log(iteration.value());//5
+console.log(iterator.value()) // выводит 1
